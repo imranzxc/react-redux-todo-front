@@ -72,19 +72,6 @@
   padding: 0;
 }
 
-/* .todo :last-child {
-  background: #e74c3c;
-  width: 45px;
-  text-align: center;
-  color: #fff;
-  border-radius: 0 3px 3px 0;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.todo :last-child:hover{
-  right: 0px;
-} */
 .done {
   padding: 5px;
   font-size: 25px;
@@ -92,15 +79,12 @@
   margin-bottom: 8px;
   display: flex;
   justify-content: space-between;
-  background:#8e49e8;
+  background: #8e49e8;
   border-radius: 3px;
   line-height: 45px;
   cursor: default;
   overflow: hidden;
   padding: 0;
- 
-}
-.done :last-child {
 }
 
 .text {
@@ -192,14 +176,13 @@ span {
   justify-content: center;
   align-items: center;
   height: 50px;
-
 }
 
 button {
   border: none;
 }
 
-.checkbox{
+.checkbox {
   margin-left: 10px;
 }
 

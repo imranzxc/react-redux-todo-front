@@ -1,11 +1,13 @@
-import { createAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
+// creating initial todo array
 const initialState = {
   todos: [],
   loading: false,
   adding: false,
 };
 
+// fetching all todos from backend
 export const fetchTodos = createAsyncThunk('todos/fetch', async (_, thunkAPI) => {
   try {
     const res = await fetch('http://localhost:4200/todos');
@@ -16,6 +18,7 @@ export const fetchTodos = createAsyncThunk('todos/fetch', async (_, thunkAPI) =>
   }
 });
 
+// adding todo
 export const postTodos = createAsyncThunk('todos/post', async (text, thunkAPI) => {
   try {
     const res = await fetch('http://localhost:4200/todos', {
@@ -30,6 +33,8 @@ export const postTodos = createAsyncThunk('todos/post', async (text, thunkAPI) =
     return thunkAPI.rejectWithValue(error);
   }
 });
+
+// deleting todo
 export const removeTodo = createAsyncThunk('todos/delete', async (id, thunkAPI) => {
   try {
     await fetch(`http://localhost:4200/todos/${id}`, {
@@ -40,6 +45,8 @@ export const removeTodo = createAsyncThunk('todos/delete', async (id, thunkAPI) 
     return thunkAPI.rejectWithValue(error);
   }
 });
+
+// changing todo
 export const patchTodo = createAsyncThunk('todos/patch', async (todo, thunkAPI) => {
   try {
     const res = await fetch(`http://localhost:4200/todos/${todo._id}`, {
@@ -56,8 +63,8 @@ export const patchTodo = createAsyncThunk('todos/patch', async (todo, thunkAPI) 
     return thunkAPI.rejectWithValue(error);
   }
 });
-// export const del = createAction("del");
 
+// creating slice functionality with all manipulation cases 
 export const todosSlice = createSlice({
   name: 'todos',
   initialState,
